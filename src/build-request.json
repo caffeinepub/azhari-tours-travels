@@ -1,122 +1,83 @@
 {
   "kind": "build_request",
-  "title": "Add Android/iOS-style installable PWA experience",
+  "title": "Fix shareable app URL and handle “Canister ID Not Resolved (Error 400)”",
   "projectName": "Azhari Tours & Travels",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-10",
-      "text": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
+      "id": "REQ-15",
+      "text": "Add an in-app “App Link” area that shows the current app URL (window.location.origin) and provides a one-tap Copy button so users can reliably share the exact working link from their device/browser.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "yes I want in (Android /iOS style)"
+          "give the link of pwa",
+          "this link (https://azhari-tours-travels.icp0.io) is not open"
         ]
       },
       "acceptanceCriteria": [
-        "The app includes a valid web app manifest and can be installed from supported mobile browsers (Add to Home Screen / Install app).",
-        "When launched from the home screen, the app runs in standalone mode (no browser UI) and still functions normally."
+        "When the app loads successfully, the UI displays the current origin (e.g., https://<host>) in a readable format.",
+        "A “Copy Link” button copies the displayed URL to the clipboard and shows a success confirmation.",
+        "If clipboard APIs are unavailable, the UI provides a fallback (e.g., selects the text for manual copy) without crashing."
       ]
     },
     {
-      "id": "REQ-11",
-      "text": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
+      "id": "REQ-16",
+      "text": "Add a user-facing troubleshooting panel for gateway resolution failures that explicitly addresses “Canister ID Not Resolved (Error 400)” and instructs users to try alternative networks/browsers, and to open the app using the exact link shown in the new “App Link” area.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "yes I want in (Android /iOS style)"
+          "Canister ID Not Resolved (ERROR 400)",
+          "THIS WILL SHOW"
         ]
       },
       "acceptanceCriteria": [
-        "frontend/index.html includes a link to the web app manifest.",
-        "frontend/index.html includes appropriate meta tags for theme color and iOS web app capability (apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style).",
-        "The document title remains “Azhari Tours & Travels”."
+        "The troubleshooting content includes the exact error phrase “Canister ID Not Resolved (Error 400)” (English).",
+        "The troubleshooting panel includes clear steps: try another browser, switch Wi‑Fi/mobile data, disable VPN, and use the exact copied link from the app.",
+        "The troubleshooting UI is mobile-friendly and does not block core booking functionality when the app is otherwise working."
       ]
     },
     {
-      "id": "REQ-12",
-      "text": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+      "id": "REQ-17",
+      "text": "Use the user-provided desired domain text “azhari tours & travels” to derive a valid ICP-friendly slug (letters/numbers/hyphens only; no spaces or ampersands) and surface that slug in a small admin/developer note inside the UI (for example in the footer) so the intended canonical hostname is unambiguous during deployment/link sharing.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "yes I want in (Android /iOS style)"
+          "azhari tours & travels"
         ]
       },
       "acceptanceCriteria": [
-        "On Android/Chromium browsers where beforeinstallprompt is supported, an install CTA is shown and triggers the native install prompt on user action.",
-        "On iOS Safari, the app displays clear English instructions for using Share → “Add to Home Screen” when appropriate.",
-        "The install UI does not block core app usage and can be dismissed."
-      ]
-    },
-    {
-      "id": "REQ-13",
-      "text": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "yes I want in (Android /iOS style)"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A service worker is present and registered by the app without modifying immutable paths (do not edit frontend/src/main.tsx).",
-        "With the device temporarily offline after a successful first load, the app shell still loads (at minimum: the main UI frame and static assets that are cached)."
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "text": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "yes I want in (Android /iOS style)"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The manifest references PNG icons at common required sizes (including 192x192 and 512x512) and includes a maskable icon.",
-        "An apple-touch-icon is provided and referenced so the installed iOS home screen icon renders correctly.",
-        "All icons are served as static frontend assets (not from the backend)."
+        "The app derives and displays a slugified hostname label from “azhari tours & travels” (e.g., “azhari-tours-travels”).",
+        "The derived slug contains only lowercase letters, numbers, and hyphens and is between 5 and 50 characters.",
+        "No existing immutable-path files are edited to implement this UI note."
       ]
     }
   ],
   "constraints": [
-    "Do not modify immutable frontend paths: frontend/src/main.tsx, frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, and anything under frontend/src/components/ui.",
-    "Backend remains single-actor Motoko; no backend changes are required for PWA installation.",
-    "Do not serve generated images from the backend; use static assets in frontend/public/assets/generated."
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files in frontend/src/components/ui (compose them instead).",
+    "Keep the backend as a single Motoko actor; do not introduce additional backend services."
   ],
   "nonGoals": [
-    "Building or distributing a native Android (APK/AAB) or iOS (IPA) app via Play Store/App Store.",
-    "Adding push notifications or real-time features (WebSockets).",
-    "Introducing third-party authentication providers beyond Internet Identity."
+    "Publishing the app to Google Play Store or Apple App Store (wrapping PWA into AAB/iOS container) is out of scope for this build request.",
+    "Changing booking data model or backend booking APIs is out of scope for this build request."
   ],
   "imageRequirements": {
-    "required": [
-      "Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_512x512.png)",
-      "Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_192x192.png)",
-      "Maskable square app icon with safe padding (azhari-app-icon-maskable.dim_512x512.png)",
-      "iOS apple-touch icon, square, warm travel-themed, no faces (azhari-apple-touch-icon.dim_180x180.png)"
-    ],
+    "required": [],
     "edits": []
   },
   "userProfileUpdate": {
     "goalsToAdd": [],
     "goalsToRemove": [],
     "preferencesToAdd": [
-      "User wants an Android/iOS-style installable app experience (PWA/Add to Home Screen) for the existing mobile-styled web app."
+      "Use English for user-facing text"
     ],
     "preferencesToRemove": [],
     "miscToAdd": [],

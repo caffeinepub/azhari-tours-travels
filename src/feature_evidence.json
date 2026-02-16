@@ -2,49 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-make-the-existing-azhari-tours-travels-web-app-installable-as-a-progressive-web-app-pwa-with-an-android-ios-style-home-screen-installed-experience-standalone-display-mode",
-      "featureTitle": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
-      "files": [
-        "frontend/index.html",
-        "frontend/public/manifest.webmanifest"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-10"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-pwa-metadata-to-the-html-entry-point-for-a-mobile-app-like-experience-on-android-and-ios-including-linking-the-manifest-setting-theme-related-meta-tags-and-enabling-ios-web-app-capability",
-      "featureTitle": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
-      "files": [
-        "frontend/index.html"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-11"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-an-in-app-user-friendly-install-prompt-ux-that-guides-users-to-install-the-app-support-the-android-install-prompt-beforeinstallprompt-and-provide-ios-add-to-home-screen-instructions-when-the-automatic-prompt-is-not-available",
-      "featureTitle": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+      "featureId": "feature-add-an-in-app-app-link-area-that-shows-the-current-app-url-window-location-origin-and-provides-a-one-tap-copy-button-so-users-can-reliably-share-the-exact-working-link-from-their-device-browser",
+      "featureTitle": "Add an in-app “App Link” area that shows the current app URL (window.location.origin) and provides a one-tap Copy button so users can reliably share the exact working link from their device/browser.",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/components/PwaInstallPrompt.tsx",
-        "frontend/src/hooks/usePwaInstallPrompt.ts"
+        "frontend/src/components/AppLinkArea.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -54,17 +16,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-12"
+        "REQ-15"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-service-worker-to-support-pwa-installation-requirements-and-basic-offline-resilience-for-static-assets-app-shell",
-      "featureTitle": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
+      "featureId": "feature-add-a-user-facing-troubleshooting-panel-for-gateway-resolution-failures-that-explicitly-addresses-canister-id-not-resolved-error-400-and-instructs-users-to-try-alternative-networks-browsers-and-to-open-the-app-using-the-exact-link-shown-in-the-new-app-link-area",
+      "featureTitle": "Add a user-facing troubleshooting panel for gateway resolution failures that explicitly addresses “Canister ID Not Resolved (Error 400)” and instructs users to try alternative networks/browsers, and to open the app using the exact link shown in the new “App Link” area.",
       "files": [
-        "frontend/public/sw.js",
         "frontend/src/App.tsx",
-        "frontend/src/pwa/registerServiceWorker.ts"
+        "frontend/src/components/TroubleshootingPanel.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -74,16 +35,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-13"
+        "REQ-16"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-include-and-reference-proper-app-icons-for-pwa-ios-home-screen-installation-including-a-maskable-icon-using-static-assets-under-frontend-public-assets-generated",
-      "featureTitle": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
+      "featureId": "feature-use-the-user-provided-desired-domain-text-azhari-tours-travels-to-derive-a-valid-icp-friendly-slug-letters-numbers-hyphens-only-no-spaces-or-ampersands-and-surface-that-slug-in-a-small-admin-developer-note-inside-the-ui-for-example-in-the-footer-so-the-intended-canonical-hostname-is-unambiguous-during-deployment-link-sharing",
+      "featureTitle": "Use the user-provided desired domain text “azhari tours & travels” to derive a valid ICP-friendly slug (letters/numbers/hyphens only; no spaces or ampersands) and surface that slug in a small admin/developer note inside the UI (for example in the footer) so the intended canonical hostname is unambiguous during deployment/link sharing.",
       "files": [
-        "frontend/index.html",
-        "frontend/public/manifest.webmanifest"
+        "frontend/src/App.tsx",
+        "frontend/src/lib/slugify.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -93,7 +54,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-14"
+        "REQ-17"
       ],
       "confidence": "high"
     }

@@ -1,7 +1,7 @@
 {
   "frontend/src/index.css": "Global styles with warm travel-themed OKLCH color system (sand/gold/emerald palette) for both light and dark modes, avoiding blue+purple primary colors.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with custom color tokens, border radius, shadows, and Inter font family for consistent mobile-first typography.",
-  "frontend/src/App.tsx": "Main application component that registers the service worker on mount and renders all sections including the new PWA install prompt within the AppShell layout.",
+  "frontend/src/App.tsx": "Main application component that registers the service worker, renders all sections including the new AppLinkArea and TroubleshootingPanel above contact/booking sections, and displays the deployment slug in the footer.",
   "frontend/src/components/AppShell.tsx": "Layout wrapper component providing consistent mobile-first padding and max-width container for the entire app.",
   "frontend/src/components/BrandHeader.tsx": "Brand header component displaying the Azhari logo, title, subtitle, and hero banner image from generated assets.",
   "frontend/src/components/ContactLocationSection.tsx": "Contact section displaying phone, WhatsApp (as tappable links), address, and Google Maps link in a card layout with icons.",
@@ -16,5 +16,8 @@
   "frontend/public/sw.js": "Service worker providing offline app shell caching and network-first strategy for static assets to enable PWA functionality and basic offline resilience.",
   "frontend/src/pwa/registerServiceWorker.ts": "Service worker registration helper that safely registers the service worker on window load with error handling.",
   "frontend/src/hooks/usePwaInstallPrompt.ts": "React hook managing PWA installability state by capturing the beforeinstallprompt event for Android/Chrome and detecting iOS Safari for manual install instructions.",
-  "frontend/src/components/PwaInstallPrompt.tsx": "Dismissible install prompt component showing native install button for Android/Chrome or step-by-step iOS instructions for \"Add to Home Screen\" using shadcn Card and Button components."
+  "frontend/src/components/PwaInstallPrompt.tsx": "Dismissible install prompt component showing native install button for Android/Chrome or step-by-step iOS instructions for \"Add to Home Screen\" using shadcn Card and Button components.",
+  "frontend/src/lib/slugify.ts": "Utility function that converts \"azhari tours & travels\" into an ICP-friendly hostname slug (lowercase, hyphens only, 5-50 chars) by removing special characters and enforcing constraints.",
+  "frontend/src/components/AppLinkArea.tsx": "Card component displaying the current app origin URL with a one-tap copy button that uses clipboard API with manual-copy fallback and toast notifications.",
+  "frontend/src/components/TroubleshootingPanel.tsx": "Collapsible troubleshooting card that displays \"Canister ID Not Resolved (Error 400)\" error explanation and five numbered steps (exact link, different browser, switch connection, disable VPN, clear cache) in a mobile-friendly layout."
 }
