@@ -1,0 +1,127 @@
+{
+  "kind": "build_request",
+  "title": "Add Android/iOS-style installable PWA experience",
+  "projectName": "Azhari Tours & Travels",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "yes I want in (Android /iOS style)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app includes a valid web app manifest and can be installed from supported mobile browsers (Add to Home Screen / Install app).",
+        "When launched from the home screen, the app runs in standalone mode (no browser UI) and still functions normally."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "yes I want in (Android /iOS style)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/index.html includes a link to the web app manifest.",
+        "frontend/index.html includes appropriate meta tags for theme color and iOS web app capability (apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style).",
+        "The document title remains “Azhari Tours & Travels”."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "yes I want in (Android /iOS style)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On Android/Chromium browsers where beforeinstallprompt is supported, an install CTA is shown and triggers the native install prompt on user action.",
+        "On iOS Safari, the app displays clear English instructions for using Share → “Add to Home Screen” when appropriate.",
+        "The install UI does not block core app usage and can be dismissed."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "yes I want in (Android /iOS style)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A service worker is present and registered by the app without modifying immutable paths (do not edit frontend/src/main.tsx).",
+        "With the device temporarily offline after a successful first load, the app shell still loads (at minimum: the main UI frame and static assets that are cached)."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "yes I want in (Android /iOS style)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The manifest references PNG icons at common required sizes (including 192x192 and 512x512) and includes a maskable icon.",
+        "An apple-touch-icon is provided and referenced so the installed iOS home screen icon renders correctly.",
+        "All icons are served as static frontend assets (not from the backend)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify immutable frontend paths: frontend/src/main.tsx, frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, and anything under frontend/src/components/ui.",
+    "Backend remains single-actor Motoko; no backend changes are required for PWA installation.",
+    "Do not serve generated images from the backend; use static assets in frontend/public/assets/generated."
+  ],
+  "nonGoals": [
+    "Building or distributing a native Android (APK/AAB) or iOS (IPA) app via Play Store/App Store.",
+    "Adding push notifications or real-time features (WebSockets).",
+    "Introducing third-party authentication providers beyond Internet Identity."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_512x512.png)",
+      "Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_192x192.png)",
+      "Maskable square app icon with safe padding (azhari-app-icon-maskable.dim_512x512.png)",
+      "iOS apple-touch icon, square, warm travel-themed, no faces (azhari-apple-touch-icon.dim_180x180.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "User wants an Android/iOS-style installable app experience (PWA/Add to Home Screen) for the existing mobile-styled web app."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

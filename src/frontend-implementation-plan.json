@@ -1,0 +1,135 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add installable Android/iOS-style PWA experience for Azhari Tours & Travels",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Make the web app installable as a PWA with a standalone (home-screen) experience.",
+      "acceptanceCriteria": [
+        "The app includes a valid web app manifest and can be installed from supported mobile browsers (Add to Home Screen / Install app).",
+        "When launched from the home screen, the app runs in standalone mode (no browser UI) and still functions normally."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "create",
+          "description": "Create a valid Web App Manifest for “Azhari Tours & Travels” configured for an installed, mobile-app-like experience (including display mode set for standalone, app name/short_name, start_url, scope, theme/background colors, and icon references that match the generated assets)."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire the manifest into the document head so supported browsers can detect installability (keep the document title exactly “Azhari Tours & Travels”)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add required PWA + iOS metadata to the HTML entry point while preserving the current title.",
+      "acceptanceCriteria": [
+        "frontend/index.html includes a link to the web app manifest.",
+        "frontend/index.html includes appropriate meta tags for theme color and iOS web app capability (apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style).",
+        "The document title remains “Azhari Tours & Travels”."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add PWA/iOS meta tags for a mobile-app-like experience: link to the manifest, set theme-color, enable iOS web app capability (apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style), and reference the Apple touch icon at frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png (served as a static asset)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add an in-app install prompt UX for Android (native prompt) and iOS (Add to Home Screen instructions).",
+      "acceptanceCriteria": [
+        "On Android/Chromium browsers where beforeinstallprompt is supported, an install CTA is shown and triggers the native install prompt on user action.",
+        "On iOS Safari, the app displays clear English instructions for using Share → “Add to Home Screen” when appropriate.",
+        "The install UI does not block core app usage and can be dismissed."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePwaInstallPrompt.ts",
+          "operation": "create",
+          "description": "Create a React hook to manage PWA installability state: capture and defer the browser beforeinstallprompt event (when available), expose a user-initiated trigger for the native install prompt, and detect iOS Safari where only “Add to Home Screen” guidance is possible."
+        },
+        {
+          "path": "frontend/src/components/PwaInstallPrompt.tsx",
+          "operation": "create",
+          "description": "Create a lightweight, dismissible install prompt component that uses the hook to show: (1) an Install CTA that triggers the native prompt on Android/Chromium, or (2) clear English iOS instructions for Share → “Add to Home Screen”. Use shadcn-ui components (e.g., Button/Card/Alert/Dialog as appropriate) to match the app’s existing UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the install prompt UI into the existing app layout (no new routes): render the new PwaInstallPrompt in a non-blocking position within the existing AppShell content so it can be dismissed and does not interfere with the booking flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add and register a service worker for PWA install requirements and basic offline resilience for the app shell.",
+      "acceptanceCriteria": [
+        "A service worker is present and registered by the app without modifying immutable paths (do not edit frontend/src/main.tsx).",
+        "With the device temporarily offline after a successful first load, the app shell still loads (at minimum: the main UI frame and static assets that are cached)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/sw.js",
+          "operation": "create",
+          "description": "Create a service worker that provides basic app-shell offline behavior by caching core static resources on first successful load and serving cached content when offline (at minimum: the HTML shell and required static assets such as manifest and icons)."
+        },
+        {
+          "path": "frontend/src/pwa/registerServiceWorker.ts",
+          "operation": "create",
+          "description": "Create a small registration helper that registers the service worker (e.g., /sw.js) when supported, and handles safe logging/failure without breaking app usage."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the service worker from within the React app lifecycle (e.g., on initial mount) by calling the registration helper—explicitly avoiding any changes to the immutable frontend/src/main.tsx."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add and reference proper PWA + iOS home screen icons (including maskable) from static generated assets.",
+      "acceptanceCriteria": [
+        "The manifest references PNG icons at common required sizes (including 192x192 and 512x512) and includes a maskable icon.",
+        "An apple-touch-icon is provided and referenced so the installed iOS home screen icon renders correctly.",
+        "All icons are served as static frontend assets (not from the backend)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/azhari-app-icon.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated square PWA app icon (512x512) as a static asset at frontend/public/assets/generated/azhari-app-icon.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/azhari-app-icon.dim_192x192.png",
+          "operation": "create",
+          "description": "Add the generated square PWA app icon (192x192) as a static asset at frontend/public/assets/generated/azhari-app-icon.dim_192x192.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated maskable PWA icon (512x512) as a static asset at frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png",
+          "operation": "create",
+          "description": "Add the generated iOS apple-touch icon (180x180) as a static asset at frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png."
+        },
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "modify",
+          "description": "Update the manifest icon list to reference the static PNG icons at frontend/public/assets/generated/azhari-app-icon.dim_192x192.png and frontend/public/assets/generated/azhari-app-icon.dim_512x512.png, and include a maskable icon entry referencing frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Ensure the Apple touch icon is referenced in the document head using frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png so iOS home screen installs render the correct icon."
+        }
+      ]
+    }
+  ]
+}

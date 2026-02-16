@@ -1,0 +1,101 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-make-the-existing-azhari-tours-travels-web-app-installable-as-a-progressive-web-app-pwa-with-an-android-ios-style-home-screen-installed-experience-standalone-display-mode",
+      "featureTitle": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-pwa-metadata-to-the-html-entry-point-for-a-mobile-app-like-experience-on-android-and-ios-including-linking-the-manifest-setting-theme-related-meta-tags-and-enabling-ios-web-app-capability",
+      "featureTitle": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-in-app-user-friendly-install-prompt-ux-that-guides-users-to-install-the-app-support-the-android-install-prompt-beforeinstallprompt-and-provide-ios-add-to-home-screen-instructions-when-the-automatic-prompt-is-not-available",
+      "featureTitle": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PwaInstallPrompt.tsx",
+        "frontend/src/hooks/usePwaInstallPrompt.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-service-worker-to-support-pwa-installation-requirements-and-basic-offline-resilience-for-static-assets-app-shell",
+      "featureTitle": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
+      "files": [
+        "frontend/public/sw.js",
+        "frontend/src/App.tsx",
+        "frontend/src/pwa/registerServiceWorker.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-include-and-reference-proper-app-icons-for-pwa-ios-home-screen-installation-including-a-maskable-icon-using-static-assets-under-frontend-public-assets-generated",
+      "featureTitle": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

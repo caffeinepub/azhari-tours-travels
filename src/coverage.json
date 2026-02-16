@@ -1,0 +1,114 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-16T15:31:02.138Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/usePwaInstallPrompt.ts",
+          "frontend/src/components/PwaInstallPrompt.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/usePwaInstallPrompt.ts",
+          "frontend/src/components/PwaInstallPrompt.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/sw.js",
+          "frontend/src/pwa/registerServiceWorker.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/sw.js",
+          "frontend/src/pwa/registerServiceWorker.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/azhari-app-icon.dim_512x512.png",
+          "frontend/public/assets/generated/azhari-app-icon.dim_192x192.png",
+          "frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png",
+          "frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png",
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/azhari-app-icon.dim_512x512.png",
+          "frontend/public/assets/generated/azhari-app-icon.dim_192x192.png",
+          "frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png",
+          "frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png",
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/public/assets/generated/azhari-app-icon-maskable.dim_512x512.png",
+    "frontend/public/assets/generated/azhari-app-icon.dim_192x192.png",
+    "frontend/public/assets/generated/azhari-app-icon.dim_512x512.png",
+    "frontend/public/assets/generated/azhari-apple-touch-icon.dim_180x180.png",
+    "frontend/public/manifest.webmanifest",
+    "frontend/public/sw.js",
+    "frontend/src/App.tsx",
+    "frontend/src/components/PwaInstallPrompt.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/hooks/usePwaInstallPrompt.ts",
+    "frontend/src/pwa/registerServiceWorker.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

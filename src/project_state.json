@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Mobile app project: “Azhari Tours & Travels” (Azhari Hajj Umrah Ziyarat) for Hajj/Umrah/Ziyarat bookings, showing contact details (phone/WhatsApp), address + Google Maps link, hotel distance info (Mecca/Madina), Instagram link, and a booking form with a scrolling month selector collecting client name and phone number. User also wants an Android/iOS-style installable app experience (not just a mobile-styled web app).",
+  "architectural_notes": [
+    "Decide delivery approach for Android/iOS-style experience (e.g., PWA installability vs hybrid/native packaging) and align build/distribution accordingly."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_512x512.png)\n- Square app icon, warm travel-themed, no faces (azhari-app-icon.dim_192x192.png)\n- Maskable square app icon with safe padding (azhari-app-icon-maskable.dim_512x512.png)\n- iOS apple-touch icon, square, warm travel-themed, no faces (azhari-apple-touch-icon.dim_180x180.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-mobile-first-responsive-single-page-app-branded-as-azhari-tours-travels-with-the-subtitle-azhari-hajj-umrah-ziyarat-optimized-for-phone-screens-mobile-style-layout-large-tap-targets-sticky-primary-cta",
+      "title": "Create a mobile-first, responsive single-page app branded as “Azhari Tours & Travels” with the subtitle “Azhari Hajj Umrah Ziyarat”, optimized for phone screens (mobile-style layout, large tap targets, sticky primary CTA).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-contact-location-section-that-displays-phone-number-919926408385-whatsapp-number-919926408385-address-naya-mohalla-near-khalid-apartment-jabalpur-madhya-pradesh-and-a-google-maps-link-https-maps-app-goo-gl-ozep3y9uqdhacrcy6-phone-and-whatsapp-numbers-must-be-tappable-links-tel-and-wa-me-and-the-maps-link-must-open-in-a-new-tab",
+      "title": "Add a “Contact & Location” section that displays: Phone number +919926408385, WhatsApp number +919926408385, address “Naya Mohalla near Khalid Apartment, Jabalpur, Madhya Pradesh”, and a Google Maps link https://maps.app.goo.gl/ozeP3Y9UqdHacrCy6. Phone and WhatsApp numbers must be tappable links (tel: and wa.me) and the Maps link must open in a new tab.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-hotels-distance-info-section-that-displays-mecca-hotel-500m-to-1km-and-madina-hotel-300m-to-600m",
+      "title": "Add a “Hotels Distance Info” section that displays: “Mecca hotel: 500m to 1km” and “Madina hotel: 300m to 600m”.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-instagram-link-section-that-points-to-https-www-instagram-com-azhari-hajj-umrah-ziyarat-igsh-dda1dnfva2vmy3bi-and-opens-in-a-new-tab",
+      "title": "Add an “Instagram” link section that points to https://www.instagram.com/_azhari_hajj_umrah_ziyarat?igsh=dDA1dnFva2VmY3Bi and opens in a new tab.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-booking-form-that-collects-required-client-name-and-client-phone-number-and-includes-a-month-slot-selector-using-a-scrolling-pattern-mobile-friendly-scroll-picker-behavior-to-choose-a-month",
+      "title": "Implement a booking form that collects (required): client name and client phone number, and includes a month “slot” selector using a scrolling pattern (mobile-friendly scroll/picker behavior) to choose a month.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-connect-the-frontend-booking-form-to-the-backend-booking-creation-method-using-the-app-s-standard-data-fetching-approach-react-query-including-loading-and-error-states",
+      "title": "Connect the frontend booking form to the backend booking creation method using the app’s standard data-fetching approach (React Query), including loading and error states.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-choose-and-apply-a-cohesive-visual-theme-for-the-app-colors-typography-spacing-components-suitable-for-a-travel-booking-brand-and-enforce-it-consistently-across-all-sections-do-not-use-a-blue-purple-primary-palette",
+      "title": "Choose and apply a cohesive visual theme for the app (colors, typography, spacing, components) suitable for a travel/booking brand, and enforce it consistently across all sections. Do not use a blue+purple primary palette.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-static-brand-images-and-render-them-in-the-ui-e-g-app-header-hero-from-frontend-public-assets-generated-do-not-serve-generated-images-from-the-backend",
+      "title": "Add generated static brand images and render them in the UI (e.g., app header/hero) from frontend/public/assets/generated (do not serve generated images from the backend).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-existing-azhari-tours-travels-web-app-installable-as-a-progressive-web-app-pwa-with-an-android-ios-style-home-screen-installed-experience-standalone-display-mode",
+      "title": "Make the existing Azhari Tours & Travels web app installable as a Progressive Web App (PWA) with an Android/iOS-style home-screen installed experience (standalone display mode).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-pwa-metadata-to-the-html-entry-point-for-a-mobile-app-like-experience-on-android-and-ios-including-linking-the-manifest-setting-theme-related-meta-tags-and-enabling-ios-web-app-capability",
+      "title": "Add PWA metadata to the HTML entry point for a mobile-app-like experience on Android and iOS, including linking the manifest, setting theme-related meta tags, and enabling iOS web app capability.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-app-user-friendly-install-prompt-ux-that-guides-users-to-install-the-app-support-the-android-install-prompt-beforeinstallprompt-and-provide-ios-add-to-home-screen-instructions-when-the-automatic-prompt-is-not-available",
+      "title": "Add an in-app, user-friendly install prompt UX that guides users to install the app: support the Android install prompt (beforeinstallprompt) and provide iOS “Add to Home Screen” instructions when the automatic prompt is not available.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-service-worker-to-support-pwa-installation-requirements-and-basic-offline-resilience-for-static-assets-app-shell",
+      "title": "Add a service worker to support PWA installation requirements and basic offline resilience for static assets (app shell).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-include-and-reference-proper-app-icons-for-pwa-ios-home-screen-installation-including-a-maskable-icon-using-static-assets-under-frontend-public-assets-generated",
+      "title": "Include and reference proper app icons for PWA + iOS home screen installation (including a maskable icon) using static assets under frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a mobile app named “Azhari Tours & Travels” for Hajj/Umrah/Ziyarat bookings",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Display business contact details: phone +919926408385 and WhatsApp +919926408385",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Show address and location link: Naya Mohalla near Khalid Apartment, Jabalpur, Madhya Pradesh + Google Maps link",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Include hotel distance information: Mecca hotel 500m–1km and Madina hotel 300m–600m",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add booking UI with a scrolling month selector for choosing a month/slot",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Booking form collects client name and client phone number",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Display Instagram link for the business profile",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Persist submitted bookings in the Motoko backend. A booking record must store: clientName, clientPhone, selectedMonth, and createdAt timestamp. Expose a backend method to create a booking and return a success response.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Provide an Android/iOS-style installable app experience for the existing mobile-styled web app (e.g., installable build/distribution approach)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Azhari Tours & Travels",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
